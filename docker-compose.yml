@@ -1,0 +1,25 @@
+version: '3'
+services:
+       # Membuat service dengan nama item-app menggunakan image item-app:v1 di port 80, menerapkan restart policy dan hanya berjalan saat item-db deploy.
+  item-app:
+    image: nikofebrianur/item-app:v1 
+    hostname: item-app
+    container_name: item-app
+    ports:
+      - "80:8080"
+    restart: always
+    depends_on:
+      - item-db
+
+        #Membuat database noSQL bernama item-db menggunakan image mongo:3 memakai volume bernama app-db dengan target /data/db di container 
+  item-db:
+    image: mongo:3 
+    hostname: item-db
+    container_name: item-db
+    volumes:
+      - app-db:/data/db
+    restart: always
+
+    # Membuat sebuah volume bernama app-db
+volumes:
+  app-db:

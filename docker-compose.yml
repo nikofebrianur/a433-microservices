@@ -2,7 +2,7 @@ version: '3'
 services:
        # Membuat service dengan nama item-app menggunakan image item-app:v1 di port 80, menerapkan restart policy dan hanya berjalan saat item-db deploy.
   item-app:
-    image: nikofebrianur/item-app:v1 
+    image: 12903478/item-app:v1 
     hostname: item-app
     container_name: item-app
     ports:
